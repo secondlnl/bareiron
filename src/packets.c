@@ -390,7 +390,7 @@ int sc_chunkDataAndUpdateLight (int client_fd, int _x, int _z) {
 
   // light data
   writeVarInt(client_fd, 1);
-  writeUint64(client_fd, 0b11111111111111111111111111);
+  writeUint64(client_fd, 67108863);
   writeVarInt(client_fd, 0);
   writeVarInt(client_fd, 0);
   writeVarInt(client_fd, 0);

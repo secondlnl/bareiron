@@ -23,7 +23,7 @@ case "$unameOut" in
 esac
 
 # Default compiler
-compiler="gcc -Wall -std=c99 -pedantic --analyzer --ansi"
+compiler="gcc -std=c99 -pedantic -Wall --analyzer"
 
 # Handle arguments for windows 9x build
 for arg in "$@"; do
@@ -40,6 +40,6 @@ for arg in "$@"; do
   esac
 done
 
-rm -f bareiron"$exe"
-$compiler src/*.c -O2 -Iinclude -o bareiron"$exe" "$windows_linker"
-./bareiron"$exe"
+rm -f bareiron$exe
+$compiler src/*.c -O2 -Iinclude -o bareiron$exe $windows_linker
+./bareiron$exe

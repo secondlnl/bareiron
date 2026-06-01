@@ -411,7 +411,7 @@ void getSmeltingOutput (PlayerData *player) {
   if (*material_count <= 0) {
     *material_count = 0;
     *material = 0;
-  } else return getSmeltingOutput(player);
+  } else getSmeltingOutput(player);
 
   return;
 
