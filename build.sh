@@ -23,7 +23,7 @@ case "$unameOut" in
 esac
 
 # Default compiler
-compiler="gcc -std=c99 -pedantic -Wall --analyzer"
+compiler="tcc -std=c99 -pedantic -Wall"
 
 # Handle arguments for windows 9x build
 for arg in "$@"; do
