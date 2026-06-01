@@ -40,6 +40,6 @@ for arg in "$@"; do
   esac
 done
 
-rm -f "bareiron$exe"
-$compiler src/*.c -O2 -Iinclude -o "bareiron$exe" $windows_linker
-"./bareiron$exe"
+rm -f bareiron"$exe"
+$compiler src/*.c -O2 -Iinclude -o bareiron"$exe" "$windows_linker"
+./bareiron"$exe"
