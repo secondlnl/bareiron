@@ -527,8 +527,8 @@ int sc_openScreen (int client_fd, uint8_t window, const char *title, uint16_t le
 // C->S Use Item
 int cs_useItem (int client_fd) {
 
-  uint8_t hand = readByte(client_fd);
-  int sequence = readVarInt(client_fd);
+  // uint8_t hand = readByte(client_fd);
+  // int sequence = readVarInt(client_fd);
 
   // Ignore yaw/pitch
   recv_all(client_fd, recv_buffer, 8, false);
@@ -544,7 +544,7 @@ int cs_useItem (int client_fd) {
 // C->S Use Item On
 int cs_useItemOn (int client_fd) {
 
-  uint8_t hand = readByte(client_fd);
+  // uint8_t hand = readByte(client_fd);
 
   int64_t pos = readInt64(client_fd);
   int x = pos >> 38;
@@ -612,7 +612,7 @@ int cs_clickContainer (int client_fd) {
 
   uint8_t slot, count, craft = false;
   uint16_t item;
-  int tmp;
+  // int tmp;
 
   uint16_t *p_item;
   uint8_t *p_count;
