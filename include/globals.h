@@ -153,7 +153,7 @@ void task_yield();
 #define ENABLE_CACTUS_DAMAGE
 
 // If defined, logs unrecognized packet IDs
-// #define DEV_LOG_UNKNOWN_PACKETS
+#define DEV_LOG_UNKNOWN_PACKETS
 
 // If defined, logs cases when packet length doesn't match parsed byte count
 #define DEV_LOG_LENGTH_DISCREPANCY
