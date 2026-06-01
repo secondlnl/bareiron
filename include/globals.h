@@ -5,11 +5,11 @@
 #include <unistd.h>
 
 #ifdef ESP_PLATFORM
-  #define WIFI_SSID "your-ssid"
-  #define WIFI_PASS "your-password"
-  void task_yield ();
+#define WIFI_SSID "your-ssid"
+#define WIFI_PASS "your-password"
+void task_yield();
 #else
-  #define task_yield();
+#define task_yield() ;
 #endif
 
 #define true 1
@@ -22,6 +22,10 @@
 // Even when offline, players who have logged on before take up a slot
 #define MAX_PLAYERS 16
 
+// If defined, server player count will show in multiplayer menu
+// May have a small performance hit
+#define SHOW_PLAYER_COUNT
+
 // How many mobs to allocate memory for
 #define MAX_MOBS (MAX_PLAYERS)
 
@@ -32,7 +36,7 @@
 #define GAMEMODE 0
 
 // Max render distance, determines how many chunks to send
-#define VIEW_DISTANCE 2
+#define VIEW_DISTANCE 8
 
 // Time between server ticks in microseconds (default = 1s)
 #define TIME_BETWEEN_TICKS 1000000
@@ -82,7 +86,7 @@
 // writes. Flash is typically *very* slow and unreliable, which is why
 // this option is disabled by default when targeting ESP-IDF.
 #ifndef ESP_PLATFORM
-  #define SYNC_WORLD_TO_DISK
+#define SYNC_WORLD_TO_DISK
 #endif
 
 // The minimum interval (in microseconds) at which certain data is written
@@ -182,13 +186,14 @@ extern char motd[];
 extern uint8_t motd_len;
 
 #ifdef SEND_BRAND
-  extern char brand[];
-  extern uint8_t brand_len;
+extern char brand[];
+extern uint8_t brand_len;
 #endif
 
 extern uint16_t client_count;
 
-typedef struct {
+typedef struct
+{
   short x;
   short z;
   uint8_t y;
@@ -197,7 +202,8 @@ typedef struct {
 
 #pragma pack(push, 1)
 
-typedef struct {
+typedef struct
+{
   uint8_t uuid[16];
   char name[16];
   int client_fd;
@@ -206,9 +212,9 @@ typedef struct {
   short z;
   short visited_x[VISITED_HISTORY];
   short visited_z[VISITED_HISTORY];
-  #ifdef SCALE_MOVEMENT_UPDATES_TO_PLAYER_COUNT
-    uint16_t packets_since_update;
-  #endif
+#ifdef SCALE_MOVEMENT_UPDATES_TO_PLAYER_COUNT
+  uint16_t packets_since_update;
+#endif
   int8_t yaw;
   int8_t pitch;
   uint8_t grounded_y;
@@ -237,7 +243,8 @@ typedef struct {
   uint8_t flags;
 } PlayerData;
 
-typedef struct {
+typedef struct
+{
   uint8_t type;
   short x;
   // When the mob is dead (health is 0), the Y coordinate acts
@@ -252,12 +259,14 @@ typedef struct {
 
 #pragma pack(pop)
 
-union EntityDataValue {
+union EntityDataValue
+{
   uint8_t byte;
   int pose;
 };
 
-typedef struct {
+typedef struct
+{
   uint8_t index;
   // 0 - Byte
   // 21 - Pose
